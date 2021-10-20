@@ -13,16 +13,30 @@ import sion.basic.order.OrderServiceImpl;
 @Configuration
 public class AppCofing {
 
+    // 실행 순서 예상
+    // call AppCofing.memberService
+    // call AppCofing.memberRepository
+    // call AppCofing.orderService
+    // call AppCofing.memberRepository
+    // call AppCofing.memberRepository
+
+    // 실제
+    // call AppCofing.memberService
+    // call AppCofing.memberRepository
+    // call AppCofing.orderService
     @Bean
     public MemberService memberService() {
+        System.out.println("call AppCofing.memberService");
         return new MemberServiceImpl(memberRepository());
     }
     @Bean
     public OrderService orderService() {
+        System.out.println("call AppCofing.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
     @Bean
     public MemoryMemberRepository memberRepository() {
+        System.out.println("call AppCofing.memberRepository");
         return new MemoryMemberRepository();
     }
     @Bean
