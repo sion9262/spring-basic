@@ -1,8 +1,11 @@
 package sion.basic.member;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class MemoryMemberRepository implements MemberRepository{
     // 동시성 문제가 발생할 수 있다.
     private static Map<Long, Member> store = new HashMap<>();

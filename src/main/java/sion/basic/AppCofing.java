@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import sion.basic.discount.DiscountPolicy;
 import sion.basic.discount.RateDiscountPolicy;
+import sion.basic.member.MemberRepository;
 import sion.basic.member.MemberService;
 import sion.basic.member.MemberServiceImpl;
 import sion.basic.member.MemoryMemberRepository;
@@ -35,7 +36,7 @@ public class AppCofing {
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
     @Bean
-    public MemoryMemberRepository memberRepository() {
+    public MemberRepository memberRepository() {
         System.out.println("call AppCofing.memberRepository");
         return new MemoryMemberRepository();
     }

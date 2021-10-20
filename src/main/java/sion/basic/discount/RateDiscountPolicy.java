@@ -1,8 +1,10 @@
 package sion.basic.discount;
 
+import org.springframework.stereotype.Component;
 import sion.basic.member.Grade;
 import sion.basic.member.Member;
 
+@Component
 public class RateDiscountPolicy implements DiscountPolicy{
 
     private int discountPercent = 10;
