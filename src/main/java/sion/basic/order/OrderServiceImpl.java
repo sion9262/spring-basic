@@ -2,6 +2,7 @@ package sion.basic.order;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import sion.basic.annotation.MainDiscountPolicy;
 import sion.basic.discount.DiscountPolicy;
 import sion.basic.discount.FixDiscountPolicy;
 import sion.basic.member.Member;
@@ -14,9 +15,9 @@ public class OrderServiceImpl implements OrderService{
     private final DiscountPolicy discountPolicy;
 
     @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy rateDiscountPolicy) {
         this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
+        this.discountPolicy = rateDiscountPolicy;
     }
 
     @Override
